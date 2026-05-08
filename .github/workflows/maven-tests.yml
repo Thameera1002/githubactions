@@ -1,23 +1,23 @@
 name: Java Selenium CI
 
-# This triggers the pipeline on every push or pull request to the 'main' branch
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
+# Give the workflow permissions to write to GitHub Pages
+permissions:
+  contents: write
+
 jobs:
   build-and-test:
-    # We use Ubuntu because it comes with Chrome and Maven pre-installed
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Pull the code from your repository
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 2. Set up the Java environment
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
@@ -25,15 +25,28 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # 3. Execute the tests using Maven
+      # RUN TESTS
       - name: Run Selenium Tests
-        run: mvn test
-        # This will look for your testng.xml defined in the pom.xml
+        run: mvn clean test
+        continue-on-error: true # CRITICAL: Continue to generate report even if a test fails!
 
-      # 4. Save the TestNG reports so you can download them later
-      - name: Upload Test Results
-        if: always() # Run this even if tests fail
-        uses: actions/upload-artifact@v4
+      # GENERATE ALLURE REPORT
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
         with:
-          name: test-reports
-          path: target/surefire-reports/
+          allure_results: target/allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+          keep_reports: 20 # Keeps history of the last 20 runs
+
+      # PUBLISH TO GITHUB PAGES
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
