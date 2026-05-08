@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1367","Verify Ebay.com Page Title","DemoSuite","Fri May 08 17:53:18 UTC 2026","passed","Fri May 08 17:53:19 UTC 2026","com.githubactions.Demo","DemoTests","com.githubactions.Demo","demoTest3"
+"","1822","Verify Youtube.com Page Title","DemoSuite","Fri May 08 17:53:19 UTC 2026","passed","Fri May 08 17:53:21 UTC 2026","com.githubactions.Demo","DemoTests","com.githubactions.Demo","demoTest4"
+"This test checks if the Google home page loads with the correct title.","570","Verify Google Search Page Title","DemoSuite","Fri May 08 17:53:16 UTC 2026","passed","Fri May 08 17:53:17 UTC 2026","com.githubactions.Demo","DemoTests","com.githubactions.Demo","demoTest1"
+"","64","Verify Example.com Page Title","DemoSuite","Fri May 08 17:53:17 UTC 2026","passed","Fri May 08 17:53:17 UTC 2026","com.githubactions.Demo","DemoTests","com.githubactions.Demo","demoTest2"

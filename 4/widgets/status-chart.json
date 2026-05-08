@@ -1,1 +1,0 @@
-[{"uid":"763a7b2929ac809d","name":"Verify Google Search Page Title","time":{"start":1778262402691,"stop":1778262403152,"duration":461},"status":"passed","severity":"critical"},{"uid":"f4f06f088d1ec08a","name":"Verify Example.com Page Title","time":{"start":1778262403557,"stop":1778262403634,"duration":77},"status":"passed","severity":"normal"}]
