@@ -63,8 +63,8 @@ public class Demo {
     @Story("Domain Verification")
     public void demoTest4() {
         openUrl("https://www.youtube.com");
-        checkTitle("YouTube");
-
+        checkTitle("You");
+        throw new RuntimeException("Intentional Failure for Screenshot Test");
     }
 
     // --- Allure Step Methods ---
