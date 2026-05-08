@@ -49,6 +49,24 @@ public class Demo {
         checkTitle("Example Domain");
     }
 
+    @Test(description = "Verify Ebay.com Page Title")
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Domain Verification")
+    public void demoTest3() {
+        openUrl("https://www.ebay.com");
+        checkTitle("Electronics, Cars, Fashion, Collectibles & More | eBay");
+
+    }
+
+    @Test(description = "Verify Youtube.com Page Title")
+    @Severity(SeverityLevel.NORMAL)
+    @Story("Domain Verification")
+    public void demoTest4() {
+        openUrl("https://www.youtube.com");
+        checkTitle("YouTube");
+
+    }
+
     // --- Allure Step Methods ---
     
     @Step("Navigating to URL: {url}")
